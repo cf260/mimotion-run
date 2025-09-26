@@ -1,0 +1,13 @@
+test-secret.yml
+name: 临时测试输出CONFIG
+on: [push]  # 或手动触发：workflow_dispatch
+
+jobs:
+  show-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name:  checkout代码
+        uses: actions/checkout@v4  # 可选步骤，若不需要代码可省略
+      
+      - name: 临时输出CONFIG内容
+        run: echo "CONFIG内容：${{ secrets.CONFIG }}"  # 核心步骤：输出secret
